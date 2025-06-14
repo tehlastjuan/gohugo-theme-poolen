@@ -1,6 +1,6 @@
 {{- $context := . -}}
 {{- $disabled := $context.Params.disable_share | compare.Default "false" -}}
-{{- $config := site.Params.ananke.social -}}
+{{- $config := site.Params.poolen.social -}}
 {{- with $config.share.disable_share -}}
   {{- $disabled := . -}}
 {{- end -}}
@@ -14,7 +14,7 @@
   {{- $hasLabel := $config.share.sharetext | compare.Default "true" -}}
   {{- $hasIcon := $config.share.icons | compare.Default "true" -}}
 
-  <div id="sharing" class="mt3 ananke-socials">
+  <div id="sharing" class="mt3 poolen-socials">
     {{- range $networks -}}
       {{- $network := . -}}
       {{- $setup := collections.Index $config.networks $network -}}
@@ -30,13 +30,13 @@
       {{- $options := (dict "context" page "setup" $setup) }}
       {{- $href := partials.Include "func/social/getShareLink.html" $options -}}
       <a href="{{ $href }}"
-        class="ananke-social-link {{ $setup.slug }} no-underline"
+        class="poolen-social-link {{ $setup.slug }} no-underline"
         title="{{ $label }}" aria-label="{{ $label }}"
         target="_blank" rel="nofollow noopener noreferrer">
         {{ with $config.share.icons -}}
           {{/* @todo add the following lines to a partial, reused collections.In social/follow.html */}}
           {{- with $setup.icon -}}
-            {{- $icon := resources.Get (fmt.Printf "ananke/socials/%s.svg" .) -}}
+            {{- $icon := resources.Get (fmt.Printf "poolen/socials/%s.svg" .) -}}
             {{- with $icon -}}
               <span class="icon">
                 {{ .Content | safe.HTML }}

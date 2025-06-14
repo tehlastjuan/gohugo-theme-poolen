@@ -22,7 +22,7 @@
   {{ end }}
 {{ end }}
 
-{{- $config := site.Params.ananke.social -}}
+{{- $config := site.Params.poolen.social -}}
 {{- $networks := $config.follow.networks -}}
 {{- $setups := (collections.Where $config.networks "slug" "in" $networks) }}
 {{ with $setups }}
@@ -30,7 +30,7 @@
   {{ range $service := . }}
     {{ with .color }}
       {{ $rule := fmt.Printf `
-        .ananke-socials a.%s:hover {
+        .poolen-socials a.%s:hover {
           color: %s !important;
         }` $service.slug . }}
       {{ $socials_rules = $socials_rules | collections.Append $rule }}
@@ -38,7 +38,7 @@
   {{ end }}
   {{ with $socials_rules }}
     {{ $socials_rules = collections.Delimit . " " }}
-    {{ $socials_css := $socials_rules | resources.FromString "ananke/css/generated_socials.css" }}
+    {{ $socials_css := $socials_rules | resources.FromString "poolen/css/generated_socials.css" }}
     {{ $assets_to_concat = $assets_to_concat | collections.Append $socials_css }}
   {{ end }}
 {{ end }}
@@ -64,7 +64,7 @@ css asset directory we (unless condition below) add to aforementioned slice */}}
 
 {{ with $assets_to_concat }}
   {{/* We proceed to concatenate the $assets_to_concat */}}
-  {{ $style := . | resources.Concat "ananke/css/main.css" }}
+  {{ $style := . | resources.Concat "poolen/css/main.css" }}
 
   {{/* We then use toCSS to add sourceMap and minify */}}
   {{ $options := dict "enableSourceMap" true "precision" 6 }}
