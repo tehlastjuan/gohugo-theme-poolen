@@ -1,0 +1,12 @@
+name = "Poolen Hugo Theme"
+license = "MIT"
+licenselink = "https://github.com/LICENSE.md"
+description = "Hugo Theme for Rollspelspoolen campaigns"
+homepage = "https://github.com/tehlastjuan/hugo-theme-poolen"
+tags = ["website", "responsive"]
+features = ["related content"]
+min_version = "0.128.0"
+
+authors = [
+  {name = "Juan Rodrigo", homepage = "https://github.com/tehlastjuan"},
+]

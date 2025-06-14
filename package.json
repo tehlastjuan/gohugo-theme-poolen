@@ -1,0 +1,46 @@
+{
+  "name": "@tehlastjuan/gohugo-theme-poolen",
+  "description": "Poolen: Rollspelspoolen Hugo Theme",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": "tehlastjuan/gohugo-theme-poolen",
+  "author": "Juan Rodrigo (https://github.com/tehlastjuan)",
+  "homepage": "https://github.com/tehlastjuan/gohugo-theme-poolen",
+  "keywords": [
+    "hugo",
+    "gohugo",
+    "hugo-theme",
+    "gohugo-theme",
+    "hugo-module",
+    "gohugo-module"
+  ],
+  "dependencies": {
+    "cssnano": "7.0.7",
+    "postcss": "8.5.3",
+    "postcss-preset-env": "10.1.6",
+    "tachyons": "4.12.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@davidsneighbour/markdownlint-config": "2025.1.5",
+    "@davidsneighbour/release-config": "2025.1.5",
+    "@davidsneighbour/tools": "2025.1.5",
+    "dotenv": "16.5.0"
+  },
+  "scripts": {
+    "release": "wireit",
+    "release:minor": "wireit",
+    "release:pre": "wireit"
+  },
+  "wireit": {
+    "release": {
+      "command": "commit-and-tag-version --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify"
+    },
+    "release:minor": {
+      "command": "commit-and-tag-version --release-as minor --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify"
+    },
+    "release:pre": {
+      "command": "commit-and-tag-version --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" --prerelease prerelease -- --no-verify"
+    }
+  }
+}

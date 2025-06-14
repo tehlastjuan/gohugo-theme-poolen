@@ -1,0 +1,43 @@
+[poolen]
+show_recent_posts = true # show recent posts on the homepage
+
+[poolen.social]
+icon_path = "poolen/socials/%s.svg"
+
+[poolen.social.follow]
+new_window_icon = false # show a little "opens in new window" icon next to the link
+# add networks to this list in your local config to enable them, remove them to disable them.
+# networks = [
+#   "facebook",
+#   "bluesky",
+#   "linkedin"
+# ]
+
+[poolen.social.share]
+icons = true # show icons for each share link
+sharetext = true # show the share text
+# add networks to this list in your local config to enable them, remove them to disable them.
+# networks = [
+#   "email",
+#   "facebook",
+#   "bluesky",
+#   "linkedin"
+# ]
+
+# social media network setups
+[poolen.social.networks.discord]
+slug = "discord"
+label = "discord"
+color = "#3b5998"
+profile = "https://www.discord.com/%s"
+icon = "discord" # font awesome brand icon name
+link = "https://discord.com/sharer/sharer.php"
+[poolen.social.networks.discord.particles]
+u = "permalink"
+
+[poolen.social.networks.github]
+slug = "github"
+label = "GitHub"
+color = "#6cc644"
+profile = "https://github.com/%s/"
+icon = "github" # font awesome brand icon name
