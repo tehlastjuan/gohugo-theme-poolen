@@ -1,3 +1,3 @@
-module github.com/tehlastjuan/hugo-theme-poolen
+module github.com/tehlastjuan/gohugo-theme-poolen
 
 go 1.21
