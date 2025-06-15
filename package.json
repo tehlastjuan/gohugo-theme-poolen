@@ -1,46 +1,49 @@
 {
-  "name": "@tehlastjuan/gohugo-theme-poolen",
+  "name": "poolen",
   "description": "Poolen: Rollspelspoolen Hugo Theme",
   "version": "1.0.0",
-  "license": "MIT",
-  "repository": "tehlastjuan/gohugo-theme-poolen",
-  "author": "Juan Rodrigo (https://github.com/tehlastjuan)",
-  "homepage": "https://github.com/tehlastjuan/gohugo-theme-poolen",
-  "keywords": [
-    "hugo",
-    "gohugo",
-    "hugo-theme",
-    "gohugo-theme",
-    "hugo-module",
-    "gohugo-module"
-  ],
-  "dependencies": {
-    "cssnano": "7.0.7",
-    "postcss": "8.5.3",
-    "postcss-preset-env": "10.1.6",
-    "tachyons": "4.12.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@davidsneighbour/markdownlint-config": "2025.1.5",
-    "@davidsneighbour/release-config": "2025.1.5",
-    "@davidsneighbour/tools": "2025.1.5",
-    "dotenv": "16.5.0"
+  "config": {
+    "HUGO_BIN": "hugo",
+    "HUGO_PORT": 1313,
+    "TEST_BASE_URL": "http://localhost:1313/",
+    "TEST_BIND_URL": "http://127.0.0.1:1313/"
   },
   "scripts": {
-    "release": "wireit",
-    "release:minor": "wireit",
-    "release:pre": "wireit"
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "start": "cross-env HUGO_PORT=${npm_package_config_HUGO_PORT} HUGO_BIN=${npm_package_config_HUGO_BIN} TEST_BASE_URL=${npm_package_config_TEST_BASE_URL} npm run start:child",
+    "start:child": "cross-env-shell \"${HUGO_BIN} --source exampleSite serve --baseURL ${TEST_BASE_URL} --port ${HUGO_PORT} --disableLiveReload\"",
+    "cypress:info": "cypress info",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:run:chrome": "cypress run --headless --browser chrome",
+    "cypress:run:firefox": "cypress run --headless --browser firefox",
+    "cypress:run:edge": "cypress run --headless --browser edge",
+    "cy:open": "cross-env-shell TEST_BIND_URL=${npm_package_config_TEST_BIND_URL} \"start-server-and-test ${TEST_BIND_URL} cypress:open\"",
+    "cy:run": "cross-env-shell TEST_BIND_URL=${npm_package_config_TEST_BIND_URL} \"start-server-and-test ${TEST_BIND_URL} cypress:run\"",
+    "cy:run:chrome": "cross-env TEST_BIND_URL=${npm_package_config_TEST_BIND_URL} npm run cy:run:chrome:child",
+    "cy:run:chrome:child": "cross-env-shell \"start-server-and-test ${TEST_BIND_URL} 'cypress:run:chrome'\"",
+    "cy:run:firefox": "cross-env TEST_BIND_URL=${npm_package_config_TEST_BIND_URL} npm run cy:run:firefox:child",
+    "cy:run:firefox:child": "cross-env-shell \"start-server-and-test ${TEST_BIND_URL} cypress:run:firefox\"",
+    "cy:run:edge": "cross-env TEST_BIND_URL=${npm_package_config_TEST_BIND_URL} npm run cy:run:edge:child",
+    "cy:run:edge:child": "cross-env-shell \"start-server-and-test ${TEST_BIND_URL} cypress:run:edge\""
   },
-  "wireit": {
-    "release": {
-      "command": "commit-and-tag-version --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify"
-    },
-    "release:minor": {
-      "command": "commit-and-tag-version --release-as minor --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify"
-    },
-    "release:pre": {
-      "command": "commit-and-tag-version --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" --prerelease prerelease -- --no-verify"
-    }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tehlastjuan/gohugo-theme-poolen.git"
+  },
+  "author": "tehlastjuan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tehlastjuan/gohugo-theme-poolen/issues"
+  },
+  "homepage": "https://github.com/tehlastjuan/gohugo-theme-poolen/shadocs",
+  "devDependencies": {
+    "bmyc": "^0.5.8",
+    "cross-env": "^7.0.3",
+    "cypress": "^13.13.3",
+    "prettier": "^3.3.3",
+    "prettier-plugin-go-template": "^0.0.15",
+    "start-server-and-test": "^2.0.5"
   }
 }
