@@ -1,3 +1,5 @@
 module github.com/tehlastjuan/gohugo-theme-poolen
 
-go 1.21
+go 1.20
+
+require github.com/jgthms/bulma v0.0.0-20220508134905-3e00a8e6d0d0 // indirect

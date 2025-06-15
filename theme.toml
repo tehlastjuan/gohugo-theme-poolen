@@ -6,7 +6,3 @@ homepage = "https://github.com/tehlastjuan/gohugo-theme-poolen"
 tags = ["website", "responsive"]
 features = ["related content"]
 min_version = "0.128.0"
-
-authors = [
-  {name = "Juan Rodrigo", homepage = "https://github.com/tehlastjuan"},
-]
